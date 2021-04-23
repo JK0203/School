@@ -1,4 +1,4 @@
-package com.example.secondlesson;
+package com.example.secondlesson.Controller;
 
 import com.example.secondlesson.Entity.User;
 import com.example.secondlesson.Service.UserService;
@@ -17,8 +17,11 @@ public class FrontController {
     private UserService userService;
 
     @GetMapping("/home") // url path
-    public String welcome(@ModelAttribute("user") User user, Model model){
+    public String welcome(@ModelAttribute("user") User user,
+                          Model model){
+
         model.addAttribute("users", userService.getAllUsers());
+
         return "index"; // open this file /templates/index.html
     }
 
