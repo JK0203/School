@@ -1,18 +1,32 @@
 package com.example.sn.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String username;
+    @NotBlank
     @Column(unique = true)
+    @Size(min = 4, max = 32)
+    private String username;
+    @NotBlank
+    @Column(unique = true)
+    @Email(message = "Must be a valid e-mail address")
     private String email;
+    @NotBlank
+    @Size(min = 6, max = 18)
     private String password;
+    private String salt;
+    @NotBlank
     private String city;
     private String photo;
+    @Size(max = 64)
     private String status;
 
     public User() {
@@ -48,6 +62,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getCity() {
