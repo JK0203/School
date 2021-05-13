@@ -1,10 +1,28 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
 <body>
-
+<h1>Create account</h1>
+<form action="#" th:action="@{/register}" method="post" th:object="${user}">
+    <label>Username:</label>
+    <input type="text" th:field="*{username}" />
+    <label>Email address:</label>
+    <input type="text" th:field="*{email}" />
+    <label>Password:</label>
+    <input type="password" th:field="*{password}"  />
+    <label>Confirm password:</label>
+    <input type="password" th:name="passwordTwo" />
+    <label>City:</label>
+    <select th:field="*{city}">
+        <!--th:value attribute to set value ----- th:text to set text for the HTML option tag-->
+        <option th:each="city : ${cities}" th:value="${city}" th:text="${city}" />
+    </select>
+    <label>Status:</label>
+    <input type="text" th:field="*{status}" />
+</form>
 </body>
 </html>

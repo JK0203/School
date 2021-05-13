@@ -3,7 +3,7 @@ package com.example.sn.Entity;
 import javax.persistence.*;
 
 @Entity
-public class UserEntity {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,7 +15,7 @@ public class UserEntity {
     private String photo;
     private String status;
 
-    public UserEntity() {
+    public User() {
     }
 
     public Long getId() {

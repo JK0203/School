@@ -3,20 +3,19 @@ package com.example.sn.Entity;
 import javax.persistence.*;
 
 @Entity
-public class PostEntity {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String body;
     private Long author;
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity user;
+    private User user;
     private Long parent;
-    @Column(insertable = false, updatable = false)
     private boolean isComment;
 
 
-    public PostEntity() {
+    public Post() {
     }
 
     public Long getId() {
@@ -43,11 +42,11 @@ public class PostEntity {
         this.author = author;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -59,11 +58,11 @@ public class PostEntity {
         this.parent = parent;
     }
 
-    public boolean isComment() {
+    public boolean getIsComment() {
         return isComment;
     }
 
-    public void setComment(boolean comment) {
-        isComment = comment;
+    public void setIsComment(Long id, Long parent) {
+        this.isComment = !(id==parent);
     }
 }
